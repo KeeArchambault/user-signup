@@ -2,32 +2,36 @@
 <html>
 
     <head>
-        <style>
-            html{
-                display: block;
-            }
-        </style>
+        
     </head>
 
     <body>
-        <form action="/">
+        <form action="/username" method="POST">
             <label for="username">Username:</label>
-            <input type="text" name="username" >{0}</input>
+            <input type="text" name="username" ></input>
+            <input type="submit"/>
+            <p style=" color: red;">{{username_error}}</p>
         </form>
 
-         <form action="/password">
+         <form action="/password" method="POST">
             <label for="password">Password:</label>
-            <input type="text" name="password">{1}</input>
+            <input type="text" name="password"></input>
+            <input type="submit"/>
+            <p style=" color: red;">{{password_error}}</p>
         </form>
 
-        <form action="/verify">
+        <form action="/verify" method="POST">
             <label for="verify">Verify Password:</label>
             <input type="text" name="verify"></input>
+            <input type="submit"/>
+            <p style=" color: red;">{{verify_error}}</p>
         </form>
 
-        <form action="/email">
+        <form action="/email" method="POST">
             <label for="email">Email:</label>
             <input type="text" name="email"></input>
+            <input type="submit"/>
+
         </form>
     </body>
 
