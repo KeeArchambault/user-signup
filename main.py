@@ -51,13 +51,21 @@ def password():
 
 @app.route("/verify", methods=["POST"])
 def verify():
+    template= jinja_env.get_template("/index.html")
     verify= request.form["verify"]
     password = request.form["password"]
     verify_error="Passwords do not match."
 
-    if password and verify != password:
-        return template.render(verify_error=verify_error)
+    if password:
+        if verify != password:
+            return template.render(verify_error=verify_error)
         
+#@app.route("/email", methods=["POST"])
+#def email():
+ #   email= request.form["email"]
+
+    
+
 
 
 app.run()    
