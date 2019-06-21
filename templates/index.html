@@ -1,41 +1,24 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-    <head>
-        
-    </head>
+{% block content %}
 
-    <body>
         <form action="/username" method="POST">
             <label for="username">Username:</label>
             <input type="text" name="username" ></input>
-            <input type="submit"/>
             <p style=" color: red;">{{username_error}}</p>
-        </form>
 
-         <form action="/password" method="POST">
             <label for="password">Password:</label>
             <input type="password" name="password"></input>
-            <input type="submit"/>
             <p style=" color: red;">{{password_error}}</p>
-        </form>
-
-        <form action="/verify" method="POST">
+      
             <label for="verify">Verify Password:</label>
             <input type="password" name="verify"></input>
-            <input type="submit"/>
             <p style=" color: red;">{{verify_error}}</p>
-        </form>
 
-        <form action="/email" method="POST">
             <label for="email">Email:</label>
             <input type="email" name="email"></input>
             <input type="submit"/>
 
         </form>
-    </body>
 
-    <footer>
-
-    </footer>
-</html>
+{% endblock %}      
