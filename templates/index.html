@@ -2,9 +2,9 @@
 
 {% block content %}
 
-        <form action="/user_inputs" method="POST">
+        <form action="/"/>
             <label for="username">Username:</label>
-            <input type="text" name="username" >{{usrname}}</input>
+            <input type="text" name="username" >{{username}}</input>
             <p style=" color: red;">{{username_error}}</p>
 
             <label for="password">Password:</label>
@@ -16,7 +16,7 @@
             <p style=" color: red;">{{verify_error}}</p>
 
             <label for="email">Email:</label>
-            <input type="email" name="email"><{{email}}/input>
+            <input type="text" name="email"><{{email}}/input>
             <input type="submit"/>
 
         </form>
