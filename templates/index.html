@@ -2,21 +2,21 @@
 
 {% block content %}
 
-        <form action="/username" method="POST">
+        <form action="/user_inputs" method="POST">
             <label for="username">Username:</label>
-            <input type="text" name="username" ></input>
+            <input type="text" name="username" >{{usrname}}</input>
             <p style=" color: red;">{{username_error}}</p>
 
             <label for="password">Password:</label>
-            <input type="password" name="password"></input>
+            <input type="password" name="password"><{{password}}/input>
             <p style=" color: red;">{{password_error}}</p>
       
             <label for="verify">Verify Password:</label>
-            <input type="password" name="verify"></input>
+            <input type="password" name="verify">{{verify}}</input>
             <p style=" color: red;">{{verify_error}}</p>
 
             <label for="email">Email:</label>
-            <input type="email" name="email"></input>
+            <input type="email" name="email"><{{email}}/input>
             <input type="submit"/>
 
         </form>

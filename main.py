@@ -1,20 +1,10 @@
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, render_template
 
-import os
-
-import jinja2
+import cgi
 
 app = Flask(__name__)
 
-app.config['DEBUG'] = True   
-
-
-template_dir = os.path.join(os.path.dirname(__file__),
-    'templates')
-
-jinja_env = jinja2.Environment(
-    loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
-
+app.config['DEBUG'] = True 
 
 @app.route("/")
 def index():
@@ -28,41 +18,37 @@ def index():
     else:
         password_error= ""
 
-    template= jinja_env.get_template("index.html")
-    return template.render()
+    return render_template("index.html")
 
-@app.route("/username", methods= ["POST"])
-def username():
+@app.route("/", methods= ["POST"])
+def user_inputs():
     username = request.form["username"]
-    username_error = "Please provide a username."
-    template= jinja_env.get_template("/index.html")
-
     if not username:
-        return template.render(username_error=username_error)
+        username_error = "Please provide a username."
+    else:
+        username_error=""
 
-@app.route("/password", methods=["POST"])
-def password():
     password = request.form["password"]
-    password_error = "Please provide a password."
-    template= jinja_env.get_template("/index.html")
-
     if not password:
-        return template.render(password_error=password_error)
+        password_error = "Please provide a password."
+    else:
+        password_error=""
 
-@app.route("/verify", methods=["POST"])
-def verify():
-    template= jinja_env.get_template("/index.html")
     verify= request.form["verify"]
     password = request.form["password"]
-    verify_error="Passwords do not match."
-
     if password:
         if verify != password:
-            return template.render(verify_error=verify_error)
+            verify_error="Passwords do not match."
+        else:
+            verify_error=""
         
-#@app.route("/email", methods=["POST"])
-#def email():
- #   email= request.form["email"]
+
+    if email:
+        email = request.form["email"]
+
+    return render_template("index.html", username=username, username_error=usename_error, password=password, password_error=password_error, verify=verify, verify_error=verify_error, email=email)    
+
+
 
     
 
