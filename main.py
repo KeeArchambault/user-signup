@@ -1,8 +1,5 @@
 from flask import Flask, request, redirect, render_template
 
-import cgi
-
-import os
 
 app = Flask(__name__)
 
@@ -15,8 +12,8 @@ def index():
     return render_template("index.html", username= "", username_error= "", password= "", password_error= "", verify= "", verify_error="", email="", email_error= "")
 
 
-@app.route("/validate_input", methods= ["POST"])
-def validate_inputs():
+@app.route("/validate", methods= ["POST"])
+def validate():
     username = request.form["username"]
     password = request.form["password"]
     verify= request.form["verify"]
@@ -46,7 +43,9 @@ def validate_inputs():
             verify= ""
               
 
-    if email and len(email) < 3 or len(email) > 20 or " " in email or email.count("@") != 1 or email.count(".")!= 1:
+    if not email:
+        email=""
+    elif email and len(email) < 3 or len(email) > 20 or " " in email or email.count("@") != 1 or email.count(".")!= 1:
         email_error = "Please provide a valid email."
         email= ""
              
