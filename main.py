@@ -15,12 +15,13 @@ def index():
     return render_template("index.html", username= "", username_error= "", password= "", password_error= "", verify= "", verify_error="", email="", email_error= "")
 
 
-@app.route("/", methods= ["POST"])
+@app.route("/validate_input", methods= ["POST"])
 def validate_inputs():
     username = request.form["username"]
     password = request.form["password"]
     verify= request.form["verify"]
     password = request.form["password"]
+    email = request.form["email"]
 
     username_error= ""
     password_error= ""
@@ -35,6 +36,8 @@ def validate_inputs():
     if not password or len(password) < 3 or len(password) > 20 or " " in password:
         password_error = "Please provide a valid password."
         password= ""
+    else:
+        password_error= ""
         
 
     if password:
