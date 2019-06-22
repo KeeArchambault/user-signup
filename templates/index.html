@@ -2,21 +2,21 @@
 
 {% block content %}
 
-        <form action="/validate_inputs" method= "POST">
+        <form action="/validate" method= "POST">
             <label for="username">Username:</label>
-            <input type="text" name="username">{{username}}</input>
+            <input type="text" name="username" value="{{username}}""></input>
             <p style=" color: red;">{{username_error}}</p>
 
             <label for="password">Password:</label>
-            <input type="password" name="password">{{password}}</input>
+            <input type="password" name="password"></input>
             <p style=" color: red;">{{password_error}}</p>
       
             <label for="verify">Verify Password:</label>
-            <input type="password" name="verify">{{verify}}</input>
+            <input type="password" name="verify"></input>
             <p style=" color: red;">{{verify_error}}</p>
 
             <label for="email">Email:</label>
-            <input type="text" name="email"><{{email}}/input>
+            <input type="text" name="email" value="{{email}}"></input>
             <p style=" color: red;">{{email_error}}</p>
             <input type="submit"/>
 
