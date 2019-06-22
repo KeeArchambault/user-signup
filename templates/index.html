@@ -2,7 +2,7 @@
 
 {% block content %}
 
-        <form action="/" method=["POST"]>
+        <form action="/validate_inputs" method= "POST">
             <label for="username">Username:</label>
             <input type="text" name="username">{{username}}</input>
             <p style=" color: red;">{{username_error}}</p>
